@@ -1,5 +1,11 @@
 # 息吹 (ibuki) — organism autonomy R2 gap-closure substrate
 
+Canonical repository: `etzhayyim/actor-ibuki`. Ibuki is the bounded autonomy
+substrate organ of the Tamaki-centered Etzhayyim artificial organism. It owns
+heartbeat, durable local state, and governed outward-envelope preparation; it
+does not replace Tamaki's organism authority or bypass member signatures. The
+former `com-etzhayyim-ibuki` name remains a compatibility redirect.
+
 > ADR-2606101200 · Apache 2.0 + etzhayyim Charter Compliance Rider v3.0
 
 The breath that closes the artificial-organism loop. The UNSPSC organism programme

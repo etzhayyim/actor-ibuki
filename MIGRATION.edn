@@ -3,7 +3,7 @@
  :migration/source {:repository "com-junkawasaki/root"
                     :revision "441987aeccb59d157db65e77ffc20ed833dabcde"
                     :path "20-actors/ibuki"}
- :migration/target "etzhayyim/com-etzhayyim-ibuki"
+ :migration/target "etzhayyim/actor-ibuki"
  :migration/canonical-format :edn
  :migration/root-only-paths ["bb.edn" "cells/fleet_beat/cell.cljc"
                              "manifest.edn" "run_tests.clj" "schema.edn"]

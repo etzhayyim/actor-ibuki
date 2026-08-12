@@ -1,4 +1,4 @@
-{:did        "did:web:etzhayyim.github.io:com-etzhayyim-ibuki"
+{:did        "did:web:etzhayyim.com:actor:ibuki"
  :handle     "ibuki.etzhayyim.com"
  :ipns-key   "ibuki-actor"
  :graph-type "com.etzhayyim.ibuki.graph"

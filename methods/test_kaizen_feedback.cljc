@@ -2,7 +2,7 @@
   "ibuki 息吹 — Wave-4 kaizen feedback loop. ADR-2606101200.
   Port of methods/test_kaizen_feedback.py (every Python assertion, 1:1)."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.kaizen-feedback :as kf]))
 

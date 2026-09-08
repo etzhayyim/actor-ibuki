@@ -28,7 +28,7 @@
   HTTP is an explicit INJECTABLE fn (`*http-post*` dynamic var or the `:http-post`
   option key). Live mode without a host capability fails closed. Deterministic (the
   dry-run export of the same log is byte-identical)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             [kotoba.datom :as kd]))
 
@@ -115,7 +115,7 @@
   [endpoint]
   (if-let [[_ scheme netloc]
            (re-find #"^([A-Za-z][A-Za-z0-9+.\-]*)://([^/?#]*)" (str endpoint))]
-    {:scheme (str/lower-case scheme) :netloc netloc}
+    {:scheme (str/lower scheme) :netloc netloc}
     {:scheme nil :netloc nil}))
 
 (defn assert-kotoba
@@ -125,7 +125,7 @@
   [endpoint]
   (let [{:keys [scheme netloc]} (url-parts endpoint)]
     (when-not (and (= "http" scheme)
-                   (contains? allowed-kotoba-hosts (some-> netloc str/lower-case)))
+                   (contains? allowed-kotoba-hosts (some-> netloc str/lower)))
       (throw (kotoba-boundary-violation
               (str "kotoba endpoint " (pr-str endpoint)
                    " is outside the fleet allowlist ("

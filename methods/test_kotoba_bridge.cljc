@@ -3,7 +3,7 @@
   Port of methods/test_kotoba_bridge.py (every Python assertion, 1:1)."
   (:require #?(:clj [cheshire.core :as json])
             [clojure.edn :as edn]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]
             [ibuki.methods.kotoba-bridge :as kb]

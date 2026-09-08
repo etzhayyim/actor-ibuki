@@ -22,7 +22,7 @@
   Environment reads go through the injectable
   `*env*` edge (nil → the real process env; a map → the test env)."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.kaizen-feedback :as kf]
             #?(:clj [clojure.java.io :as io])))
 

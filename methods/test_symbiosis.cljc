@@ -2,7 +2,7 @@
   "test-symbiosis — 息吹 (ibuki) the 共生 ledger: humanity draws the commons. ADR-2606101200.
   Clojure port of `methods/test_symbiosis.py`."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

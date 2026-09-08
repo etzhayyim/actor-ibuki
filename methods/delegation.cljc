@@ -41,7 +41,7 @@
   namespace contains NO signature primitive of any kind. Portable .cljc."
   (:refer-clojure :exclude [load])
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 (def capability

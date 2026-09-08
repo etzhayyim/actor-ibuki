@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-ecosystem
   "test-ecosystem — 息吹 (ibuki) the colony as an ECOSYSTEM. ADR-2606101200 §生態系.
   Clojure port of `methods/test_ecosystem.py`."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

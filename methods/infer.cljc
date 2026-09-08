@@ -18,7 +18,7 @@
   Live-call failure falls back to the template (fail-open: the organism keeps
   living offline). HTTP is an explicit INJECTABLE fn (`*http-post*` dynamic var
   or the `:http-post` option key); live mode without it fails closed."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ADR-2605215000: the Murakumo fleet endpoints — LiteLLM gateway (loopback),
 ;; EVO-X2 (LAN), per-node Ollama (loopback). NOTHING else is representable.
@@ -51,7 +51,7 @@
   [endpoint]
   (if-let [[_ scheme netloc]
            (re-find #"^([A-Za-z][A-Za-z0-9+.\-]*)://([^/?#]*)" (str endpoint))]
-    {:scheme (str/lower-case scheme) :host (str/lower-case netloc)}
+    {:scheme (str/lower scheme) :host (str/lower netloc)}
     {:scheme nil :host nil}))
 
 (defn assert-murakumo

@@ -4,7 +4,7 @@
   Hermetic: the live path is exercised through the injectable :fetch fn only —
   no network is ever touched."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]
             [ibuki.methods.perception :as perception]))

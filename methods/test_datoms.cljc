@@ -3,7 +3,7 @@
   Clojure-native datoms tests (ADR-2606261200; the Python↔Clojure CID-parity test retired with the py source)
   (the ibuki invariant: crash-resume = byte-identical head CID)."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]))
 

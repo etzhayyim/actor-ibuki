@@ -24,7 +24,7 @@
   the host fetch provider enforces the
   allowlist BEFORE any I/O. No credential is ever read here: public endpoints only,
   the platform signs nothing (G7)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]))
 
 ;; READ-ONLY public AppView hosts the membrane may observe. HTTPS GET only.
@@ -53,7 +53,7 @@
   [url]
   (if-let [[_ scheme netloc]
            (re-find #"^([A-Za-z][A-Za-z0-9+.\-]*)://([^/?#]*)" (str url))]
-    {:scheme (str/lower-case scheme) :host (str/lower-case netloc)}
+    {:scheme (str/lower scheme) :host (str/lower netloc)}
     {:scheme nil :host nil}))
 
 (defn assert-allowed

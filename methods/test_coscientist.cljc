@@ -2,7 +2,7 @@
   "test-coscientist — Generate→Reflect→Rank→Evolve→Meta-review + the Charter gates. ADR-2606201200.
   The safety property under test: a self-persisting organism can never propose a predatory mechanism."
   (:require [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.coscientist :as c]
             [ibuki.methods.metabolism :as m]))

@@ -16,7 +16,7 @@
   earns a `:event/symbiosis-fed` joucho event (mutualism). Satiation, detritus recycling, and
   stigmergy (adaptive Physarum trails) round out the web. Deterministic. Append-only. Pure."
   (:refer-clojure :exclude [cycle])
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.joucho :as joucho]))
 

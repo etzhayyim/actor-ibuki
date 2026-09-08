@@ -4,7 +4,7 @@
   always a stub."
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.kaizen-feedback :as kf]
             [ibuki.methods.kaizen-outcomes :as ko]))

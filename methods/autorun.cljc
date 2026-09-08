@@ -19,7 +19,7 @@
   LOCAL log + the LOCAL queue file."
   (:require #?(:clj [cheshire.core :as json])
             [clojure.edn :as edn]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.digest :as digest]
             [ibuki.methods.drainer :as drainer]

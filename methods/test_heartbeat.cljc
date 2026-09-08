@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-heartbeat
   "ibuki 息吹 durable heartbeat cadence tests. ADR-2606101200.
   Port of methods/test_heartbeat.py."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]
             [ibuki.methods.heartbeat :as heartbeat]))

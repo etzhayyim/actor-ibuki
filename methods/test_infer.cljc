@@ -2,7 +2,7 @@
   "ibuki 息吹 — Murakumo-only narration. ADR-2606101200 + ADR-2605215000.
   Port of methods/test_infer.py (every Python assertion, 1:1) + the injectable
   HTTP-fn contract (the stubbed live path, no gateway required)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.infer :as infer]))
 

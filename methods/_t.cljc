@@ -10,7 +10,7 @@
   harness — so nothing requires this namespace. It is ported only for faithful 1:1 parity
   with `_t.py` (the Python tests still use `from _t import run, expect_raises`). The
   process-exit edge is behind #?(:clj …) to keep the module loadable everywhere."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn run
   "Run a suite of [name fn] cases. A case passes if `fn` returns without throwing; a throwing

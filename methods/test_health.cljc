@@ -2,7 +2,7 @@
   "test-health — 息吹 (ibuki) colony 健全性 audit. ADR-2606101200 §健全化.
   Clojure port of `methods/test_health.py`."
   (:require [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

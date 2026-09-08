@@ -28,7 +28,7 @@
   through the injectable `*env*` edge (nil → the real process env; a map → the test env),
   so the refusal paths are exercisable exactly as the Python tests exercise os.environ."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.drainer :as drainer]
             #?(:clj [clojure.java.io :as io])))
 

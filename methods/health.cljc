@@ -17,7 +17,7 @@
   the verdict on the log (as-of queryable). No per-organism wellbeing SCORE (edge-primary).
   Deterministic. Append-only."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.joucho :as joucho]
             #?(:clj [clojure.java.io :as io])))

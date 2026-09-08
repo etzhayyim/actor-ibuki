@@ -11,7 +11,7 @@
   them with `json.loads` (the exact inverse — \\n / \\t / \\\" / \\\\ escapes). This port
   mirrors that JSON-string decode, falling back (like the Python `except ValueError`) to a
   minimal \\\" / \\\\ unescape for any non-JSON-shaped quoted token in a hand-authored file."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 ;; ── tokenizer ─────────────────────────────────────────────────────────────────
 ;; Python: re.compile(r'[\s,]+|;[^\n]*|(\[|\]|\{|\}|"(?:\\.|[^"\\])*"|[^\s,\[\]{}]+)')

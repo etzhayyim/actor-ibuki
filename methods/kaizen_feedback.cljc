@@ -30,7 +30,7 @@
   decision-maker (ADR-2605240200: auto-apply is rejected; the loop closes
   through people, the LEARNING closes through the log)."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             #?(:clj [clojure.java.io :as io])))
 
 (def suppress-after 3)   ;; consecutive rejections before a rule is suppressed
@@ -47,7 +47,7 @@
   (keyword (-> (str s)
                (str/replace #"([a-z0-9])([A-Z])" "$1-$2")
                (str/replace "_" "-")
-               str/lower-case)))
+               str/lower)))
 
 #?(:clj
    (defn- read-ndjson [path]

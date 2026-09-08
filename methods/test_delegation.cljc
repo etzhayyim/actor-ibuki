@@ -3,7 +3,7 @@
   ADR-2606111400 + ADR-2606101200 §委任. Clojure port of `methods/test_delegation.py`."
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.delegation :as dg]))
 

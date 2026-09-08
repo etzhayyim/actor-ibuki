@@ -26,7 +26,7 @@
   Deterministic: logical beat = log length (no wall clock, no randomness). Persisting to the LIVE
   kotoba engine reuses the existing ibuki R3 bridge (kotoba_bridge.cljc) and stays G7/operator-gated.
   Stdlib + the shared kotoba.datom; portable .cljc (bb)."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ibuki.methods.coscientist :as cosci]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.infer :as infer]

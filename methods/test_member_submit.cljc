@@ -9,7 +9,7 @@
   asserted by ibuki."
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.member-submit :as ms]

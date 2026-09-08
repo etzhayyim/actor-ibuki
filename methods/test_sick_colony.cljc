@@ -13,7 +13,7 @@
 
   Contrast with the healthy seed (producer+router+decomposer), which stays green."
   (:require [clojure.edn :as edn]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

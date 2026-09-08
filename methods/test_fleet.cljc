@@ -6,7 +6,7 @@
   universe/partition facts, and a small synthetic registry for sweep mechanics
   (hermetic + fast — fixture sizes match the Python suite exactly)."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.ecosystem :as ecosystem]

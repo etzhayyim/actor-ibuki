@@ -14,7 +14,7 @@
   Closed vocab: a receipt status other than \"submitted-by-member\" throws (this module
   records member submissions, nothing else). Stdlib only. Deterministic. Portable .cljc."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             #?(:clj [clojure.java.io :as io])))
 

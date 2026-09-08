@@ -2,7 +2,7 @@
   "test-quorum — 息吹 (ibuki) quorum sensing: emergent collective behaviour. ADR-2606101200.
   Clojure port of `methods/test_quorum.py`."
   (:require [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

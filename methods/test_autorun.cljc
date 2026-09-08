@@ -3,7 +3,7 @@
   Clojure port of `methods/test_autorun.py`."
   (:require #?(:clj [cheshire.core :as json])
             [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

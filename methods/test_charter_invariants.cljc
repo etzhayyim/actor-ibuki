@@ -13,7 +13,7 @@
   All 19 ibuki modules are ported to Clojure; the source scans here cover the whole
   .cljc surface (the same set `test_charter_invariants.py` scans over the .py side)."
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.digest :as digest]
@@ -71,7 +71,7 @@
   (doseq [[name src] (all-source)
           banned ["api.openai.com" "runpod" "bedrock" "vertexai"
                   "generativelanguage.googleapis"]]
-    (is (not (str/includes? (str/lower-case src) banned))
+    (is (not (str/includes? (str/lower src) banned))
         (str name " references " banned))))
 
 ;; ── G7 no-server-key ───────────────────────────────────────────────────────
@@ -115,7 +115,7 @@
   (doseq [[name src] (all-source)
           banned ["psycopg" "sqlalchemy" "risingwave" "kysely" "sqlite"
                   "duckdb" "lancedb"]]
-    (is (not (str/includes? (str/lower-case src) banned))
+    (is (not (str/includes? (str/lower src) banned))
         (str name " pulls in a parallel substrate: " banned))))
 
 ;; ── 非終末論 append-only ───────────────────────────────────────────────────
@@ -223,7 +223,7 @@
     (is (not (str/includes? src "\":published\"")))
     (is (str/includes? src "\":dry-run\""))
     (doseq [banned ["api.openai.com" "runpod" "bedrock" "http://" "https://"]]
-      (is (not (str/includes? (str/lower-case src) banned))
+      (is (not (str/includes? (str/lower src) banned))
           (str "digest must route inference via ibuki.methods.infer: " banned)))))
 
 (deftest infer-text-enforces-murakumo-allowlist

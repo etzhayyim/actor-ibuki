@@ -23,7 +23,7 @@
                    (not in the catalog, and `review` rejects them if injected).
     G-falsifiable  a hypothesis must carry a measurable prediction (no prediction → not science).
     G-leash        outward interventions are member-principal / dry-run only; the loop proposes."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ibuki.methods.metabolism :as metabolism]))
 
 ;; ── mechanism vocabulary (closed) ───────────────────────────────────────────

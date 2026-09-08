@@ -2,7 +2,7 @@
   "test-digest — 息吹 (ibuki) colony digest: the colony reasons + reports. ADR-2606101800.
   Clojure port of `methods/test_digest.py`."
   (:require [clojure.set :as set]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [clojure.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

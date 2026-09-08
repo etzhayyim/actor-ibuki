@@ -33,7 +33,7 @@
   Deterministic (logical beat time; no wall clock). Live deploy of the cron cell stays
   G8-gated."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.digest :as digest]
             [ibuki.methods.drainer :as drainer]

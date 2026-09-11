@@ -66,7 +66,7 @@ Murakumo narration, the LIVE-engine bridge (reuse R3 `kotoba_bridge`), and membe
 interventions are the G7/operator/member legs — the loop itself does no network I/O, holds no key.
 
 Run (bb, classpath includes `20-actors` + `20-actors/kotodama/src`):
-`bb 20-actors/ibuki/methods/react_loop.cljk <log> <colony-size> [--live]` (resume-safe heartbeat).
+`kbb 20-actors/ibuki/methods/react_loop.cljk <log> <colony-size> [--live]` (resume-safe heartbeat).
 
 ## Gates — do NOT weaken (each has a test in test_charter_invariants.py)
 
@@ -169,7 +169,7 @@ Run (bb, classpath includes `20-actors` + `20-actors/kotodama/src`):
 ## Build / test / run autonomously
 
 ```
-bb test                                        # .cljc suites, hermetic
+kbb -M:test                                        # .cljc suites, hermetic
 ```
 
 Generated artifacts (`data/ibuki*.datoms.kotoba.edn`, `data/*posts.queue.ndjson`) are

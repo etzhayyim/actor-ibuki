@@ -9,4 +9,4 @@ fi
 ln -s "$PWD" ibuki
 trap 'unlink ibuki' EXIT
 export IBUKI_UNSPSC_REGISTRY_PATH="${IBUKI_UNSPSC_REGISTRY_PATH:-$PWD/wire/actor-registry/unspsc.json}"
-bb run_tests.cljk
+kbb run_tests.cljk

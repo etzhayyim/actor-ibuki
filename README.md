@@ -29,7 +29,7 @@ persistence, every outward edge member-signed and gated.
 bb test                                         # .cljc suites, hermetic
 ```
 
-**R1 (same wave): the real 18,342-organism fleet on durable checkpoints.** `methods/fleet.cljc`
+**R1 (same wave): the real 18,342-organism fleet on durable checkpoints.** `methods/fleet.cljk`
 loads the versioned wire snapshot (`wire/actor-registry/unspsc.json`), shards it exactly
 like the kotodama fleet cell (jacob/joseph/issachar/dan), and sweeps each shard in bounded
 batches behind a durable `:fleet.shard/cursor` — no LRU needed for correctness, mid-sweep
@@ -42,7 +42,7 @@ joucho events, durable `:perception/*` snapshots, fail-open); `member_submit.clj
 MEMBER-principal posting runtime (member's own env credentials, https only, `--yes`
 required, **cron contexts structurally refused**); `receipts.cljc` folds member-attributed
 `:receipt/*` back onto the log (ibuki never asserts `:published`);
-`cells/fleet_beat/cell.cljc` runs the durable beat and is registered on
+`cells/fleet_beat/cell.cljk` runs the durable beat and is registered on
 joseph/issachar/dan in `50-infra/murakumo/fleet.toml`. E2E verified: beat → 64 envelopes →
 member-signed → 64 receipts on one verified chain.
 

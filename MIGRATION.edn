@@ -5,8 +5,8 @@
                     :path "20-actors/ibuki"}
  :migration/target "etzhayyim/actor-ibuki"
  :migration/canonical-format :edn
- :migration/root-only-paths ["bb.edn" "cells/fleet_beat/cell.cljc"
-                             "manifest.edn" "run_tests.clj" "schema.edn"]
+ :migration/root-only-paths ["bb.edn" "cells/fleet_beat/cell.cljk"
+                             "manifest.edn" "run_tests.cljk" "schema.edn"]
  :migration/removed ["manifest.jsonld"
                      "cells/fleet_beat/cell.py"
                      "tools/issue_delegation.py"
@@ -22,8 +22,8 @@
  [{:coordinate io.github.kotoba-lang/kotoba
    :revision "47a83883ce0ca91d6cda978c8fd03f38192c3887"}]
  :migration/compatibility-snapshots
- [{:source "20-actors/kotodama/src/kotoba/datom.cljc"
-   :target "src/kotoba/datom.cljc"
+ [{:source "20-actors/kotodama/src/kotoba/datom.cljk"
+   :target "src/kotoba/datom.cljk"
    :gap :extract-and-publish-shared-kotoba-datom-library}]
  :migration/deprecated-languages {:go :pruned :tinygo :pruned
                                   :found []

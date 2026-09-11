@@ -6,7 +6,7 @@
 ;; :seed/kind and :seed/organisms are already meaningfully namespaced (idiomatic Clojure)
 ;; so neither key is re-prefixed. :seed/kind is a live keyword scalar; :seed/organisms is a
 ;; vector-of-maps (non-scalar) so it is pr-str'd into a blob string — parse it back with
-;; `edn/read-string` (methods/autorun.cljc `load-seed` does this transparently for both the
+;; `edn/read-string` (methods/autorun.cljk `load-seed` does this transparently for both the
 ;; legacy bare-map shape and this tx-data shape). :organism/niche = trophic role in the
 ;; ecosystem (ADR-2606101200 §生態系): :niche/producer 植物 (primary production) ·
 ;; :niche/router 粘菌 (Physarum relay) · :niche/decomposer カビ (saprotroph → refined

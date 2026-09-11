@@ -5,7 +5,7 @@
 ;; this actor's tree and runs it via clojure.test — this actor had test suites but no
 ;; runner wired up (vitals reflex was reading as :absent).
 ;;
-;;   bb run_tests.clj      ; run from repository root (run_tests.sh wires classpath)
+;;   bb run_tests.cljk      ; run from repository root (run_tests.sh wires classpath)
 (require '[babashka.classpath :as cp]
          '[babashka.fs :as fs]
          '[clojure.test :as t])

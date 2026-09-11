@@ -72,10 +72,10 @@
       (is (str/includes? (first lines) "\"merged\"")))))
 
 (deftest module-is-read-only-toward-github
-  (let [portable (slurp (or (io/resource "ibuki/methods/kaizen_outcomes.cljc")
-                            (io/file "methods/kaizen_outcomes.cljc")))
-        host (slurp (or (io/resource "ibuki/methods/host_capabilities.clj")
-                        (io/file "methods/host_capabilities.clj")))
+  (let [portable (slurp (or (io/resource "ibuki/methods/kaizen_outcomes.cljk")
+                            (io/file "methods/kaizen_outcomes.cljk")))
+        host (slurp (or (io/resource "ibuki/methods/host_capabilities.cljk")
+                        (io/file "methods/host_capabilities.cljk")))
         src (-> (str portable "\n" host)
                 (str/replace "'" "\""))]
     (is (str/includes? src "\"view\""))

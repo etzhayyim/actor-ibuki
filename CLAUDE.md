@@ -40,22 +40,22 @@ SENSE ─▶ ORIENT ─▶ HYPOTHESIZE ─▶ REVIEW ─▶ RANK ─▶ EVOLVE �
                                                  /cost)   Murakumo  leak-free) reserves)  kaizen wt) tx)
 ```
 
-- `methods/metabolism.cljc` — the dissipative-structure fold → the metabolic state vector
+- `methods/metabolism.cljk` — the dissipative-structure fold → the metabolic state vector
   (Φ=intake−dissipation / reserves / **η**=exported÷consumed the 共生 axis / **surprise**=
   variational free energy). Negentropy SOURCES (`env-reading`, representative R0 / live G7):
   compute / donation / members / moyai / **attention (hard-capped — §1.13)**. EXPORTED = the
   food-web `:metabolite/commons` (ecosystem/web-report). PURE — the loop supplies the priors.
-- `methods/coscientist.cljc` — Generate (a charter-clean **catalog**, never an LLM free-write —
+- `methods/coscientist.cljk` — Generate (a charter-clean **catalog**, never an LLM free-write —
   a predatory mechanism is unrepresentable) → Reflect (`review`, the gates) → Rank (Elo) →
   Evolve → Meta-review (Murakumo-narrated, fail-open template G6).
-- `methods/react_loop.cljc` — the beat: ACT pre-registers a **dry-run** experiment with its
+- `methods/react_loop.cljk` — the beat: ACT pre-registers a **dry-run** experiment with its
   prediction recorded BEFORE the outcome (leak-free, the mitooshi discipline); the next beat
   proper-scores it (Brier) and updates the per-mechanism kaizen weight. Idempotent-by-content,
   verify-chain, resume-safe (logical beat = log length).
-- `coscientist_cell.cljc` — `IbukiCoscientistHeartbeatCell` (node zebulun, cron 17 * * * *,
+- `coscientist_cell.cljk` — `IbukiCoscientistHeartbeatCell` (node zebulun, cron 17 * * * *,
   healthz 13084). `kotoba/coscientist-schema.edn` = the ontology.
 
-**Gates (in `coscientist/review`, tested — `methods/test_coscientist.cljc`)**: **G-parasitism**
+**Gates (in `coscientist/review`, tested — `methods/test_coscientist.cljk`)**: **G-parasitism**
 (projected η ≥ 1.0 — the ECL collective-commons dimension made operational; a η<1 metabolism is a
 net taker), **G-subordinate** (expected 子孫 wellbecoming ≥ 0 — self-persistence is vetoed by the
 catastrophe sense when it would harm descendants), **G-mechanism** (manipulation /
@@ -66,7 +66,7 @@ Murakumo narration, the LIVE-engine bridge (reuse R3 `kotoba_bridge`), and membe
 interventions are the G7/operator/member legs — the loop itself does no network I/O, holds no key.
 
 Run (bb, classpath includes `20-actors` + `20-actors/kotodama/src`):
-`bb 20-actors/ibuki/methods/react_loop.cljc <log> <colony-size> [--live]` (resume-safe heartbeat).
+`bb 20-actors/ibuki/methods/react_loop.cljk <log> <colony-size> [--live]` (resume-safe heartbeat).
 
 ## Gates — do NOT weaken (each has a test in test_charter_invariants.py)
 

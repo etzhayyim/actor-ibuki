@@ -17,9 +17,9 @@ None of them holds a member credential or a platform signing key.
 
 | flag | effect | substrate |
 |---|---|---|
-| `IBUKI_PERCEPTION_LIVE=1` | read-only public-AppView observation | `methods/perception.cljc` |
-| `IBUKI_MURAKUMO_LIVE=1` | Murakumo narration, fail-open to template | `methods/infer.cljc` |
-| `IBUKI_KOTOBA_LIVE=1` + operator DID | persist Datom transactions | `methods/kotoba_bridge.cljc` |
+| `IBUKI_PERCEPTION_LIVE=1` | read-only public-AppView observation | `methods/perception.cljk` |
+| `IBUKI_MURAKUMO_LIVE=1` | Murakumo narration, fail-open to template | `methods/infer.cljk` |
+| `IBUKI_KOTOBA_LIVE=1` + operator DID | persist Datom transactions | `methods/kotoba_bridge.cljk` |
 
 The actor repository deliberately contains no member key or autonomous live-I/O launcher.
 

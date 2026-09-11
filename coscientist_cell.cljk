@@ -23,7 +23,7 @@
    (defn- actor-dir
      "20-actors/ibuki, resolved from this namespace's classpath location (runs from any cwd)."
      []
-     (-> (io/resource "ibuki/coscientist_cell.cljc") io/file .getParentFile)))
+     (-> (io/resource "ibuki/coscientist_cell.cljk") io/file .getParentFile)))
 
 #?(:clj
    (def log-default

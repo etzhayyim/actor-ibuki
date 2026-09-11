@@ -26,7 +26,7 @@ persistence, every outward edge member-signed and gated.
 | 7. Kaizen one-way | outcomes fold back: rule suppression after repeated rejection + mood events (merge calms, rejection stresses) |
 
 ```bash
-bb test                                         # .cljc suites, hermetic
+kbb -M:test                                         # .cljc suites, hermetic
 ```
 
 **R1 (same wave): the real 18,342-organism fleet on durable checkpoints.** `methods/fleet.cljk`

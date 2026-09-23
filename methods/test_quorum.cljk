@@ -3,7 +3,7 @@
   Clojure port of `methods/test_quorum.py`."
   (:require [clojure.set :as set]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.quorum :as quorum]

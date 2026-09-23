@@ -4,7 +4,7 @@
   (:require #?(:clj [cheshire.core :as json])
             [clojure.edn :as edn]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]
             [ibuki.methods.kotoba-bridge :as kb]
             [kotoba.datom :as kd]))

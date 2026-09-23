@@ -2,7 +2,7 @@
   "ibuki 息吹 evolving 5-axis mood tests. ADR-2606101200.
   Port of methods/test_joucho.py."
   (:require [clojure.set :as set]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]))
 
 (deftest default-scores-match-kotodama-stub

@@ -5,7 +5,7 @@
   no network is ever touched."
   (:require [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]
             [ibuki.methods.perception :as perception]))
 

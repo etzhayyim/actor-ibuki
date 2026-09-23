@@ -8,7 +8,7 @@
   and asserts the whole organism — perception → feel → ecosystem food web → symbiosis pool →
   quorum → health → digest — holds together on one verified append-only chain."
   (:require [clojure.set :as set]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.ecosystem :as ecosystem]

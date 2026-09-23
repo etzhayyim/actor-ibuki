@@ -3,7 +3,7 @@
   Clojure port of `methods/test_symbiosis.py`."
   (:require [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.symbiosis :as sym]))

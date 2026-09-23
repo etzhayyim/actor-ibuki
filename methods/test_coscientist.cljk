@@ -3,7 +3,7 @@
   The safety property under test: a self-persisting organism can never propose a predatory mechanism."
   (:require [clojure.set :as set]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.coscientist :as c]
             [ibuki.methods.metabolism :as m]))
 

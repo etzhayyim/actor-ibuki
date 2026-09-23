@@ -4,7 +4,7 @@
   (the ibuki invariant: crash-resume = byte-identical head CID)."
   (:require [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]))
 
 (defn- tx

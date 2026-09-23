@@ -14,7 +14,7 @@
   .cljc surface (the same set `test_charter_invariants.py` scans over the .py side)."
   (:require [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.digest :as digest]
             [ibuki.methods.drainer :as drainer]

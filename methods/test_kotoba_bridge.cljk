@@ -2,7 +2,7 @@
   "ibuki 息吹 — R3 bridge to the live kotoba engine. ADR-2606101200 §R3.
   Port of methods/test_kotoba_bridge.py (every Python assertion, 1:1)."
   (:require #?(:clj [cheshire.core :as json])
-            [clojure.edn :as edn]
+            [kotoba.lang.edn :as edn]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]

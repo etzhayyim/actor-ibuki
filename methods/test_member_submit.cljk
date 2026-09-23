@@ -10,7 +10,7 @@
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.member-submit :as ms]
             [ibuki.methods.receipts :as rc]))

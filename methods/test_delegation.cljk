@@ -4,7 +4,7 @@
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
-            [clojure.test :refer [deftest is]]
+            [kotoba.test :refer [deftest is]]
             [ibuki.methods.delegation :as dg]))
 
 (def actor "did:web:etzhayyim.com:actor:ibuki")  ;; the organism (bearer) — NOT the CACAO audience

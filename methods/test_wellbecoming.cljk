@@ -1,6 +1,6 @@
 (ns ibuki.methods.test-wellbecoming
   "Tests for the charter-clean social-reward event + Wellbecoming-as-trajectory (ADR-2606171500)."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as j]
             [ibuki.methods.wellbecoming :as wb]))
 

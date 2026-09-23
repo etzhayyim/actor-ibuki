@@ -1,6 +1,6 @@
 (ns ibuki.methods.test-metabolism
   "test-metabolism — the dissipative-structure free-energy fold. ADR-2606201200."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
             [ibuki.methods.metabolism :as m]))
 

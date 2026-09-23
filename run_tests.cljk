@@ -8,7 +8,7 @@
 ;;   kbb run_tests.cljk      ; run from repository root (run_tests.sh wires classpath)
 (require '[babashka.classpath :as cp]
          '[babashka.fs :as fs]
-         '[clojure.test :as t])
+         '[kotoba.test :as t])
 
 ;; run_tests.sh creates a transient ./ibuki symlink, so the repository itself is the
 ;; classpath root while existing ibuki.* namespaces remain stable after extraction.

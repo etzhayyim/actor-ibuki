@@ -12,7 +12,7 @@
     carry the complaint to the Wave-4 kaizen loop.
 
   Contrast with the healthy seed (producer+router+decomposer), which stays green."
-  (:require [clojure.edn :as edn]
+  (:require [kotoba.lang.edn :as edn]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]

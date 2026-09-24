@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-symbiosis
   "test-symbiosis — 息吹 (ibuki) the 共生 ledger: humanity draws the commons. ADR-2606101200.
   Clojure port of `methods/test_symbiosis.py`."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as kio] [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
@@ -31,8 +31,8 @@
     {"signedBy" "member" "claim" (get claim "kind")}))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-symbiosis" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-symbiosis")))
 
 (deftest pool-offered-drawn-available
   (let [txs (commons-log 10 20 30)

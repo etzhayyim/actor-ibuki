@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-digest
   "test-digest — 息吹 (ibuki) colony digest: the colony reasons + reports. ADR-2606101800.
   Clojure port of `methods/test_digest.py`."
-  (:require [kotoba.lang.coll :as set]
+  (:require [kotoba.io :as kio] [kotoba.lang.coll :as set]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
@@ -9,8 +9,8 @@
             [ibuki.methods.digest :as digest]))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-digest" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-digest")))
 
 (defn- life
   "Run a fresh autonomous life and return the parsed log."

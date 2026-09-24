@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-ecosystem
   "test-ecosystem — 息吹 (ibuki) the colony as an ECOSYSTEM. ADR-2606101200 §生態系.
   Clojure port of `methods/test_ecosystem.py`."
-  (:require [kotoba.lang.text :as str]
+  (:require [kotoba.io :as kio] [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
@@ -18,8 +18,8 @@
          over))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-eco" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-eco")))
 
 (defn- a2 [d] (nth d 2))
 (defn- a3 [d] (nth d 3))

@@ -13,8 +13,8 @@
    (d/make-tx body {:tx-id tx-id :as-of (+ 2606100000 tx-id) :prev-cid prev})))
 
 (defn- tmplog []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-clj" (make-array java.nio.file.attribute.FileAttribute 0))
+  (str (io/temp-dir
+        "ibuki-clj")
        "/log.edn"))
 
 (deftest datoms-are-append-only-adds

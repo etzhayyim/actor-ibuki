@@ -7,7 +7,7 @@
   subsystem at once and keep every cross-cutting invariant. This suite runs one 60-beat life
   and asserts the whole organism — perception → feel → ecosystem food web → symbiosis pool →
   quorum → health → digest — holds together on one verified append-only chain."
-  (:require [kotoba.lang.coll :as set]
+  (:require [kotoba.io :as kio] [kotoba.lang.coll :as set]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
@@ -20,8 +20,8 @@
 (def ^:private codes ["10101500" "14111500" "50221000"])
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-integration" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-integration")))
 
 (defn- life
   "One fresh autonomous run; returns [log-path txs]."

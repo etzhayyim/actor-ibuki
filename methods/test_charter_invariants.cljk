@@ -12,7 +12,7 @@
 
   All 19 ibuki modules are ported to Clojure; the source scans here cover the whole
   .cljc surface (the same set `test_charter_invariants.py` scans over the .py side)."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as kio] [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
@@ -42,8 +42,8 @@
         source-names))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-charter" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-charter")))
 
 (defn- thrown-msg
   "Run f, return the ex message it throws (nil if it does not throw)."

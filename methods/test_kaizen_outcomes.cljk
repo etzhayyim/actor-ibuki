@@ -2,7 +2,7 @@
   "test-kaizen-outcomes — 息吹 (ibuki) R3 operator-principal outcome collector.
   Clojure port of `methods/test_kaizen_outcomes.py`. No network/gh: the runner is
   always a stub."
-  (:require [cheshire.core :as json]
+  (:require [kotoba.io :as kio] [cheshire.core :as json]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -10,8 +10,8 @@
             [ibuki.methods.kaizen-outcomes :as ko]))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-kaizen-outcomes" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-kaizen-outcomes")))
 
 (defn- proposals-file [dir rows]
   (let [p (io/file dir "proposals.ndjson")]

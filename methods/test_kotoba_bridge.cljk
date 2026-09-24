@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-kotoba-bridge
   "ibuki 息吹 — R3 bridge to the live kotoba engine. ADR-2606101200 §R3.
   Port of methods/test_kotoba_bridge.py (every Python assertion, 1:1)."
-  (:require #?(:clj [cheshire.core :as json])
+  (:require [kotoba.bytes :as kbytes] [kotoba.io :as kio] #?(:clj [cheshire.core :as json])
             [kotoba.lang.edn :as edn]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -12,8 +12,8 @@
 ;; ── helpers (test_kotoba_bridge.py _log / _fake_transport / expect_raises) ─
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-kb-clj" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-kb-clj")))
 
 (defn- make-log
   ([dir] (make-log dir 3))
@@ -170,8 +170,7 @@
           padded (str payload-b64
                       (apply str (repeat (mod (- 4 (mod (count payload-b64) 4)) 4) "=")))
           payload (json/parse-string
-                   (String. (.decode (java.util.Base64/getUrlDecoder) ^String padded)
-                            "UTF-8"))]
+                   (kbytes/utf8-string (kbytes/base64url-decode-bytes ^String padded)))]
       (is (= {"sub" "did:key:zexample"} payload)))))   ;; the public DID, nothing else
 
 ;; ── the leash: member-issued delegation as the auth principal ─────────────

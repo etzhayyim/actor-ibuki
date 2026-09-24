@@ -7,7 +7,7 @@
   subsystem at once and keep every cross-cutting invariant. This suite runs one 60-beat life
   and asserts the whole organism — perception → feel → ecosystem food web → symbiosis pool →
   quorum → health → digest — holds together on one verified append-only chain."
-  (:require [clojure.set :as set]
+  (:require [kotoba.lang.coll :as set]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]

@@ -1,6 +1,6 @@
 (ns ibuki.methods.test-react-loop
   "test-react-loop — the co-scientist ReAct beat end-to-end: sense→…→act→learn→persist. ADR-2606201200."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as io]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.coscientist :as cosci]
             [ibuki.methods.datoms :as datoms]

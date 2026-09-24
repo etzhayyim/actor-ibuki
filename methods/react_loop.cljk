@@ -32,7 +32,7 @@
             [ibuki.methods.infer :as infer]
             [ibuki.methods.metabolism :as metabolism]
             [kotoba.datom :as kd]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def default-log "data/ibuki-coscientist.datoms.kotoba.edn")
 

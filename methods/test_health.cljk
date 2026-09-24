@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-health
   "test-health — 息吹 (ibuki) colony 健全性 audit. ADR-2606101200 §健全化.
   Clojure port of `methods/test_health.py`."
-  (:require [kotoba.lang.coll :as set]
+  (:require [kotoba.io :as kio] [kotoba.lang.coll :as set]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
@@ -11,8 +11,8 @@
             [ibuki.methods.kaizen-feedback :as kf]))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-health" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-health")))
 
 (defn- run-autorun [dir cycles]
   (let [log (str dir "/log.edn")]

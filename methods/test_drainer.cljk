@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-drainer
   "test-drainer — 息吹 (ibuki) Wave-3 member-signed drainer. ADR-2606101200 + ADR-2605240100.
   Clojure port of `methods/test_drainer.py`."
-  (:require [cheshire.core :as json]
+  (:require [kotoba.io :as kio] [cheshire.core :as json]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -18,8 +18,8 @@
           over)))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-drainer" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-drainer")))
 
 (defn- write-queue [dir lines]
   (let [q (io/file dir "queue.ndjson")]

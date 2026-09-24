@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-autorun
   "test-autorun — 息吹 (ibuki) autonomous heartbeat loop. ADR-2606101200.
   Clojure port of `methods/test_autorun.py`."
-  (:require #?(:clj [cheshire.core :as json])
+  (:require [kotoba.io :as kio] #?(:clj [cheshire.core :as json])
             [kotoba.lang.coll :as set]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -11,8 +11,8 @@
             [ibuki.methods.joucho :as joucho]))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-autorun" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-autorun")))
 
 (defn- run-life
   "Returns [result log-path queue-path]."

@@ -7,7 +7,7 @@
   cron → refusal; no ack → refusal), and when the MEMBER posts with their own
   credentials, the log records an attributed receipt — never a `:published`
   asserted by ibuki."
-  (:require [cheshire.core :as json]
+  (:require [kotoba.io :as kio] [cheshire.core :as json]
             [clojure.java.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -16,8 +16,8 @@
             [ibuki.methods.receipts :as rc]))
 
 (defn- tmpdir []
-  (str (java.nio.file.Files/createTempDirectory
-        "ibuki-member-submit" (make-array java.nio.file.attribute.FileAttribute 0))))
+  (str (kio/temp-dir
+        "ibuki-member-submit")))
 
 (defn- queue-file
   "Write an n-line valid post queue (wire-format string keys) into dir."

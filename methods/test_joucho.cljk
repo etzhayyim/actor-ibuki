@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-joucho
   "ibuki 息吹 evolving 5-axis mood tests. ADR-2606101200.
   Port of methods/test_joucho.py."
-  (:require [clojure.set :as set]
+  (:require [kotoba.lang.coll :as set]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]))
 

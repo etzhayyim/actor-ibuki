@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-health
   "test-health — 息吹 (ibuki) colony 健全性 audit. ADR-2606101200 §健全化.
   Clojure port of `methods/test_health.py`."
-  (:require [clojure.set :as set]
+  (:require [kotoba.lang.coll :as set]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]

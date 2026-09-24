@@ -2,7 +2,7 @@
   "ibuki 息吹 Datom log tests: chain + as-of fold. ADR-2606101200.
   Clojure-native datoms tests (ADR-2606261200; the Python↔Clojure CID-parity test retired with the py source)
   (the ibuki invariant: crash-resume = byte-identical head CID)."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as d]))

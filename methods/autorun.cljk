@@ -30,10 +30,10 @@
             [ibuki.methods.joucho :as joucho]
             [ibuki.methods.kaizen-feedback :as kaizen-feedback]
             [ibuki.methods.quorum :as quorum]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def root
-  #?(:clj (if (.exists (io/file "20-actors/ibuki/data/seed-organisms.kotoba.edn"))
+  #?(:clj (if (io/exists? (io/file "20-actors/ibuki/data/seed-organisms.kotoba.edn"))
             "20-actors/ibuki"
             ".")
      :cljs "20-actors/ibuki"))
@@ -96,7 +96,7 @@
                        "title" title "mood" mood "contentSourceKind" "recordAnalysis"
                        "text" text "lexicon" "app.bsky.feed.post" "createdAt" created})
            f (io/file (str queue-path))]
-       (when-let [p (.getParentFile f)] (.mkdirs p))
+       (when-let [p (io/parent-file f)] (io/mkdirs p))
        (spit f (str (generate line) "\n") :append true))))
 
 #?(:clj
@@ -244,8 +244,8 @@
                :or {fresh false log-path default-log-path}}]
       (let [queue-path (or queue-path default-queue-path)]
         (when fresh
-          (.delete (io/file (str log-path)))
-          (.delete (io/file (str queue-path))))
+          (io/delete (io/file (str log-path)))
+          (io/delete (io/file (str queue-path))))
         (let [organisms (load-seed)]
           ;; O(N) heartbeat: read the durable log ONCE, then thread (txs, head) in memory across
           ;; beats. append-tx! still persists every beat, and a *fresh* autorun call re-reads from

@@ -24,7 +24,7 @@
   (:require #?(:clj [cheshire.core :as json])
             [kotoba.lang.text :as str]
             [ibuki.methods.kaizen-feedback :as kf]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def env-cron "IBUKI_CRON")
 
@@ -114,8 +114,8 @@
      [outcome-records path]
      (let [generate json/generate-string
            f (io/file (str path))]
-       (when-let [parent (.getParentFile f)]
-         (.mkdirs parent))
+       (when-let [parent (io/parent-file f)]
+         (io/mkdirs parent))
        (spit f (apply str
                       (map #(str (generate (into (sorted-map)
                                                  {"outcome" (:outcome %)

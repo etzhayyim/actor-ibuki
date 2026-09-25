@@ -3,7 +3,7 @@
   Clojure port of `methods/test_perception.py` (every Python assertion, 1:1).
   Hermetic: the live path is exercised through the injectable :fetch fn only —
   no network is ever touched."
-  (:require [clojure.java.io :as io]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]
@@ -50,7 +50,7 @@
     (is (= [":event/idle" ":event/follower-gained" ":event/follower-gained"] events))))
 
 (deftest live-observation-without-fetch-capability-fails-closed
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"explicit fetch capability"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"explicit fetch capability"
                         (perception/events-for-beat
                          1 {:actor "did:web:x" :live true}))))
 

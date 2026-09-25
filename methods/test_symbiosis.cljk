@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-symbiosis
   "test-symbiosis — 息吹 (ibuki) the 共生 ledger: humanity draws the commons. ADR-2606101200.
   Clojure port of `methods/test_symbiosis.py`."
-  (:require [kotoba.io :as kio] [clojure.java.io :as io]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as kio] [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
@@ -51,23 +51,23 @@
     (is (= 40 (:offered (sym/commons-pool [tx]))))))
 
 (deftest draw-without-signer-refused
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"no member signer"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"no member signer"
                         (sym/draw (commons-log 50) 10 {:member MEMBER :beat 2 :as-of 2}))))
 
 (deftest draw-without-operator-ack-refused
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"operator_ack"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"operator_ack"
                         (sym/draw (commons-log 50) 10
                                   {:member MEMBER :beat 2 :as-of 2
                                    :member-signer (signer (atom []))}))))
 
 (deftest draw-cannot-exceed-pool
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"exceeds available"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"exceeds available"
                         (sym/draw (commons-log 30) 31
                                   {:member MEMBER :beat 2 :as-of 2
                                    :member-signer (signer (atom [])) :operator-ack true}))))
 
 (deftest draw-must-be-positive
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"positive"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"positive"
                         (sym/draw (commons-log 30) 0
                                   {:member MEMBER :beat 2 :as-of 2
                                    :member-signer (signer (atom [])) :operator-ack true}))))

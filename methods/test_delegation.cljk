@@ -2,7 +2,7 @@
   "test-delegation — 息吹 (ibuki) the revocable leash: scoped, expiring capability.
   ADR-2606111400 + ADR-2606101200 §委任. Clojure port of `methods/test_delegation.py`."
   (:require [kotoba.io :as kio] [cheshire.core :as json]
-            [clojure.java.io :as io]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.delegation :as dg]))

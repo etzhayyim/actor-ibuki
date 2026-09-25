@@ -1,8 +1,8 @@
 (ns ibuki.methods.test-drainer
   "test-drainer — 息吹 (ibuki) Wave-3 member-signed drainer. ADR-2606101200 + ADR-2605240100.
   Clojure port of `methods/test_drainer.py`."
-  (:require [kotoba.io :as kio] [cheshire.core :as json]
-            [clojure.java.io :as io]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as kio] [cheshire.core :as json]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.drainer :as drainer]))
@@ -66,11 +66,11 @@
                 (mapv #(nth % 3)))))))
 
 (deftest submit-without-signer-is-impossible
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"no member signer"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"no member signer"
                         (drainer/submit [(drainer/envelope (line))]))))
 
 (deftest submit-without-operator-ack-refused
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"operator_ack"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"operator_ack"
                         (drainer/submit [(drainer/envelope (line))]
                                         {:member-signer identity}))))
 

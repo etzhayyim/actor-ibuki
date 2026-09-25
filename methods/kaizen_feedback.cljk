@@ -31,7 +31,7 @@
   through people, the LEARNING closes through the log)."
   (:require #?(:clj [cheshire.core :as json])
             [kotoba.lang.text :as str]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def suppress-after 3)   ;; consecutive rejections before a rule is suppressed
 (def suppress-beats 12)  ;; how many beats a suppressed rule stays quiet
@@ -52,7 +52,7 @@
 #?(:clj
    (defn- read-ndjson [path]
      (let [f (io/file (str path))]
-       (if-not (.exists f)
+       (if-not (io/exists? f)
          []
          (let [parse json/parse-string]
            (->> (str/split-lines (slurp f))

@@ -7,8 +7,8 @@
   cron → refusal; no ack → refusal), and when the MEMBER posts with their own
   credentials, the log records an attributed receipt — never a `:published`
   asserted by ibuki."
-  (:require [kotoba.io :as kio] [cheshire.core :as json]
-            [clojure.java.io :as io]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as kio] [cheshire.core :as json]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.datoms :as datoms]
@@ -64,29 +64,29 @@
 
 (deftest no-env-means-no-session
   (binding [ms/*env* {}]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"no member credentials"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"no member credentials"
                           (ms/create-member-session)))))
 
 (deftest cron-context-refused-even-with-env
   (binding [ms/*env* (assoc member-env ms/env-cron "1")]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"cron"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"cron"
                           (ms/create-member-session)))
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"cron"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"cron"
                           (ms/submit-queue "/nonexistent")))))
 
 (deftest http-pds-refused
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"https"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"https"
                         (ms/http-json "http://pds.example.com/xrpc/x" {}))))
 
 (deftest member-session-without-transport-capability-fails-closed
   (binding [ms/*env* member-env]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"explicit transport capability"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"explicit transport capability"
                           (ms/create-member-session)))))
 
 (deftest submit-without-ack-refused
   (binding [ms/*env* member-env]
     (let [q (queue-file (tmpdir))]
-      (is (thrown-with-msg? clojure.lang.ExceptionInfo #"operator_ack"
+      (is (thrown-with-msg? kerror/ExceptionInfo #"operator_ack"
                             (ms/submit-queue q {:transport (fake-transport (atom []))}))))))
 
 (deftest member-submits-and-receipts-attribute-the-member
@@ -151,7 +151,7 @@
                    "submittedBy" "did:plc:m"
                    "status" "published"})
                  "\n"))
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"closed vocab"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"closed vocab"
                           (rc/read-receipts p)))))
 
 (deftest no-committed-credentials-in-source

@@ -42,7 +42,7 @@
   (:refer-clojure :exclude [load])
   (:require #?(:clj [cheshire.core :as json])
             [kotoba.lang.text :as str]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def capability
   "The only capability ibuki's autonomous loop ever needs."
@@ -68,7 +68,7 @@
      organism then falls back to local-log-only (fail-open, never crashes)."
      [path]
      (let [f (io/file (str path))]
-       (when (.exists f)
+       (when (io/exists? f)
          (let [parse json/parse-string
                bundle (parse (slurp f))
                missing (vec (remove #(contains? bundle %) required-keys))]

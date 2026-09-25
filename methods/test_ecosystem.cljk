@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-ecosystem
   "test-ecosystem — 息吹 (ibuki) the colony as an ECOSYSTEM. ADR-2606101200 §生態系.
   Clojure port of `methods/test_ecosystem.py`."
-  (:require [kotoba.io :as kio] [kotoba.lang.text :as str]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as kio] [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.autorun :as autorun]
             [ibuki.methods.datoms :as datoms]
@@ -25,7 +25,7 @@
 (defn- a3 [d] (nth d 3))
 
 (deftest niche-closed-vocab
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"closed vocab"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"closed vocab"
                         (eco/niche-of "x" ":niche/parasite"))))
 
 (deftest niche-declared-then-hashed

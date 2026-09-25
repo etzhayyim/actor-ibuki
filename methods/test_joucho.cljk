@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-joucho
   "ibuki 息吹 evolving 5-axis mood tests. ADR-2606101200.
   Port of methods/test_joucho.py."
-  (:require [kotoba.lang.coll :as set]
+  (:require [kotoba.lang.error :as kerror] [kotoba.lang.coll :as set]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as joucho]))
 
@@ -32,7 +32,7 @@
 
 (deftest fold-event-unknown-kind-raises
   (let [base (joucho/scores)]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"closed vocab"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"closed vocab"
                           (joucho/fold-event base ":event/made-up" base)))))
 
 (deftest fold-event-deltas-and-clamp
@@ -76,7 +76,7 @@
     (is (= 51 (:focus rejected)))))
 
 (deftest event-datoms-closed-vocab
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"closed vocab"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"closed vocab"
                         (joucho/event-datoms "c" [":event/nope"] {:beat 1 :as-of 1}))))
 
 (deftest joucho-datoms-shape

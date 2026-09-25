@@ -20,7 +20,7 @@
   Scores are plain maps {:joy :calm :stress :gratitude :focus} (each 0-100); the Python
   JouchoScores dataclass defaults are `default-scores` / `(scores …)`. Deterministic. No
   wall clock."
-  (:require [ibuki.methods.datoms :as d]))
+  (:require [kotoba.bytes :as kbytes] [ibuki.methods.datoms :as d]))
 
 (def moods ["joyful" "calm" "stressed" "grateful" "focused" "neutral"])
 
@@ -45,7 +45,7 @@
   #?(:clj (fn [^String s]
             (mapv #(bit-and % 0xff)
                   (.digest (java.security.MessageDigest/getInstance "SHA-256")
-                           (.getBytes s "UTF-8"))))
+                           (kbytes/utf8-bytes s))))
      :default (fn [_] (throw (ex-info "bind ibuki.methods.joucho/*sha256-bytes* on this host" {})))))
 
 (defn personality-baseline

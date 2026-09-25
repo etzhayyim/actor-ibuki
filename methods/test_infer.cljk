@@ -2,7 +2,7 @@
   "ibuki 息吹 — Murakumo-only narration. ADR-2606101200 + ADR-2605215000.
   Port of methods/test_infer.py (every Python assertion, 1:1) + the injectable
   HTTP-fn contract (the stubbed live path, no gateway required)."
-  (:require [kotoba.lang.text :as str]
+  (:require [kotoba.lang.error :as kerror] [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.infer :as infer]))
 
@@ -11,7 +11,7 @@
   (the expect_raises(…, contains=\"Murakumo\") parity)."
   [& body]
   `(let [e# (try ~@body nil
-                 (catch #?(:clj clojure.lang.ExceptionInfo :cljs :default) e# e#))]
+                 (catch :default e# e#))]
      (is (some? e#) "expected MurakumoOnlyViolation, none raised")
      (when e#
        (is (infer/murakumo-only-violation? e#))
@@ -60,7 +60,7 @@
                    :endpoint "https://api.openai.com/v1/chat/completions"})))
 
 (deftest narrate-live-without-capability-fails-closed
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"explicit http-post capability"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"explicit http-post capability"
                         (infer/narrate "t" "c" "calm" "recordAnalysis"
                                        {:live true}))))
 
@@ -92,7 +92,7 @@
    (infer/infer-text "p" "fb" {:live true
                                :endpoint "https://api.openai.com/v1/chat/completions"}))
   ;; live authority must be explicit
-  (is (thrown-with-msg? clojure.lang.ExceptionInfo #"explicit http-post capability"
+  (is (thrown-with-msg? kerror/ExceptionInfo #"explicit http-post capability"
                         (infer/infer-text "p" "fb" {:live true})))
   ;; stubbed live path → murakumo
   (let [stub (fn [_ body _]

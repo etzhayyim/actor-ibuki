@@ -24,7 +24,7 @@
   the host fetch provider enforces the
   allowlist BEFORE any I/O. No credential is ever read here: public endpoints only,
   the platform signs nothing (G7)."
-  (:require [kotoba.lang.text :as str]
+  (:require [kotoba.http.form-urlencoded :as form-urlencoded] [kotoba.lang.text :as str]
             [ibuki.methods.datoms :as datoms]))
 
 ;; READ-ONLY public AppView hosts the membrane may observe. HTTPS GET only.
@@ -93,7 +93,7 @@
   "Python `urllib.parse.quote(s, safe='')` parity: percent-encode everything
   but ALPHA / DIGIT / `_.-~`."
   [s]
-  #?(:clj (-> (java.net.URLEncoder/encode (str s) "UTF-8")
+  #?(:clj (-> (form-urlencoded/form-encode (str s))
               (str/replace "+" "%20")
               (str/replace "*" "%2A")
               (str/replace "%7E" "~"))

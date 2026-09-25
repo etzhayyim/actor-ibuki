@@ -44,7 +44,7 @@
             [ibuki.methods.joucho :as joucho]
             [ibuki.methods.perception :as perception]
             [ibuki.methods.quorum :as quorum]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def registry-rel "00-contracts/actor-registry/unspsc.json")
 
@@ -70,7 +70,7 @@
      directory to the repo root)."
      []
      (or (System/getenv "IBUKI_UNSPSC_REGISTRY_PATH")
-         (loop [dir (.getCanonicalFile (io/file (System/getProperty "user.dir")))]
+         (loop [dir (io/canonical-file (io/file (System/getProperty "user.dir")))]
            (if (nil? dir)
              (throw (ex-info (str "UNSPSC registry not found above "
                                   (System/getProperty "user.dir")
@@ -79,9 +79,9 @@
              (let [cand (io/file dir registry-rel)
                    rooted-cand (io/file dir "root" registry-rel)]
                (cond
-                 (.exists cand) (.getPath cand)
-                 (.exists rooted-cand) (.getPath rooted-cand)
-                 :else (recur (.getParentFile dir)))))))))
+                 (io/exists? cand) (io/path cand)
+                 (io/exists? rooted-cand) (io/path rooted-cand)
+                 :else (recur (io/parent-file dir)))))))))
 
 #?(:clj
    (defn load-registry
@@ -219,7 +219,7 @@
                        "text" text "lexicon" "app.bsky.feed.post"
                        "createdAt" (format "2026-06-10T00:00:00.%03dZ" (mod ts-ms 1000))})
            f (io/file (str queue-path))]
-       (when-let [p (.getParentFile f)] (.mkdirs p))
+       (when-let [p (io/parent-file f)] (io/mkdirs p))
        (spit f (str (generate line) "\n") :append true))))
 
 #?(:clj
@@ -229,7 +229,7 @@
      restart never re-prepares what an earlier beat already prepared."
      [queue-path from-line {:keys [as-of beat]}]
      (let [f (io/file (str queue-path))]
-       (if-not (.exists f)
+       (if-not (io/exists? f)
          [[] from-line]
          (let [parse json/parse-string
                lines (str/split-lines (slurp f))
@@ -436,8 +436,8 @@
       (let [log (or log-path default-log-path)
             queue (or queue-path default-queue-path)]
         (when fresh
-          (.delete (io/file (str log)))
-          (.delete (io/file (str queue))))
+          (io/delete (io/file (str log)))
+          (io/delete (io/file (str queue))))
         (let [shard (if (some? shard-index) shard-index (resolve-shard))
               shard-name (first (get shards shard))
               slice (shard-agents (load-registry registry-path) shard)]

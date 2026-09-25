@@ -30,7 +30,7 @@
   (:require #?(:clj [cheshire.core :as json])
             [kotoba.lang.text :as str]
             [ibuki.methods.drainer :as drainer]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 (def env-handle "IBUKI_MEMBER_HANDLE")
 (def env-app-password "IBUKI_MEMBER_APP_PASSWORD")
@@ -178,8 +178,8 @@
      [receipts path]
      (let [generate json/generate-string
            f (io/file (str path))]
-       (when-let [parent (.getParentFile f)]
-         (.mkdirs parent))
+       (when-let [parent (io/parent-file f)]
+         (io/mkdirs parent))
        (with-open [w (io/writer f :append true)]
          (doseq [r receipts]
            (.write w (str (generate (into (sorted-map) (select-keys r receipt-file-keys)))

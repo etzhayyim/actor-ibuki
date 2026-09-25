@@ -2,8 +2,8 @@
   "test-kaizen-outcomes — 息吹 (ibuki) R3 operator-principal outcome collector.
   Clojure port of `methods/test_kaizen_outcomes.py`. No network/gh: the runner is
   always a stub."
-  (:require [kotoba.io :as kio] [cheshire.core :as json]
-            [clojure.java.io :as io]
+  (:require [kotoba.lang.error :as kerror] [kotoba.io :as kio] [cheshire.core :as json]
+            [kotoba.io :as io]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
             [ibuki.methods.kaizen-feedback :as kf]
@@ -20,10 +20,10 @@
 
 (deftest cron-context-refused
   (binding [ko/*env* {ko/env-cron "1"}]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"cron"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"cron"
                           (ko/collect "/nonexistent")))
     (is (try (ko/collect "/nonexistent") false
-             (catch clojure.lang.ExceptionInfo e
+             (catch kerror/ExceptionInfo e
                (ko/operator-context-required? e))))))
 
 (deftest states-map-to-closed-outcomes
@@ -44,7 +44,7 @@
 
 (deftest unknown-state-raises
   (let [p (proposals-file (tmpdir) [{"proposalId" "p1" "rule" "r" "pr" 1}])]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo #"closed vocab"
+    (is (thrown-with-msg? kerror/ExceptionInfo #"closed vocab"
                           (ko/collect p {:gh (constantly "DRAFT")})))))
 
 (deftest collected-outcomes-feed-kaizen-feedback-end-to-end
@@ -86,6 +86,6 @@
 (deftest missing-gh-capability-fails-closed
   (let [p (proposals-file (tmpdir)
                           [{"proposalId" "p1" "rule" "r" "pr" 1}])]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo
+    (is (thrown-with-msg? kerror/ExceptionInfo
                           #"explicit read-only gh capability"
                           (ko/collect p)))))

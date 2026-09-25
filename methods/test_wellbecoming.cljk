@@ -1,6 +1,6 @@
 (ns ibuki.methods.test-wellbecoming
   "Tests for the charter-clean social-reward event + Wellbecoming-as-trajectory (ADR-2606171500)."
-  (:require [kotoba.test :refer [deftest is]]
+  (:require [kotoba.lang.error :as kerror] [kotoba.test :refer [deftest is]]
             [ibuki.methods.joucho :as j]
             [ibuki.methods.wellbecoming :as wb]))
 
@@ -13,8 +13,8 @@
     (is (= 29 (:stress after)))          ; isolation soothed
     (is (= 53 (:gratitude after)))
     ;; engagement counts stay unrepresentable (closed vocab raises, §1.13)
-    (is (thrown? clojure.lang.ExceptionInfo (j/fold-event base ":event/like-counted" base)))
-    (is (thrown? clojure.lang.ExceptionInfo (j/fold-event base ":event/comment-count" base)))))
+    (is (thrown? kerror/ExceptionInfo (j/fold-event base ":event/like-counted" base)))
+    (is (thrown? kerror/ExceptionInfo (j/fold-event base ":event/comment-count" base)))))
 
 (deftest wellbecoming-is-movement-never-a-score
   (let [base (j/scores)

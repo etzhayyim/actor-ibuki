@@ -1,7 +1,7 @@
 (ns ibuki.methods.test-kotoba-bridge
   "ibuki 息吹 — R3 bridge to the live kotoba engine. ADR-2606101200 §R3.
   Port of methods/test_kotoba_bridge.py (every Python assertion, 1:1)."
-  (:require [kotoba.bytes :as kbytes] [kotoba.io :as kio] #?(:clj [cheshire.core :as json])
+  (:require [kotoba.lang.error :as kerror] [kotoba.bytes :as kbytes] [kotoba.io :as kio] #?(:clj [cheshire.core :as json])
             [kotoba.lang.edn :as edn]
             [kotoba.lang.text :as str]
             [kotoba.test :refer [deftest is]]
@@ -101,7 +101,7 @@
 
 (deftest live-default-transport-without-http-capability-fails-closed
   (let [log (make-log (tmpdir) 1)]
-    (is (thrown-with-msg? clojure.lang.ExceptionInfo
+    (is (thrown-with-msg? kerror/ExceptionInfo
                           #"explicit http-post capability"
                           (kb/push log {:live true})))))
 
@@ -279,6 +279,6 @@
 ;; or without a configured secret. A bearer token is not a substitute for it.
 (deftest allowlist-still-enforced-alongside-internal-trust
   (with-redefs [kb/internal-trust (constantly synthetic-trust)]
-    (is (thrown? clojure.lang.ExceptionInfo
+    (is (thrown? kerror/ExceptionInfo
                  (kb/default-transport "http://evil.example.com/x" {}
                                        {:http-post (fn [& _] {:status "ok"})})))))

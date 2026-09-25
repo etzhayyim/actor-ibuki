@@ -17,13 +17,13 @@
   member-principal (ADR-2606101200 G8)."
   (:require [ibuki.methods.react-loop :as rl]
             [kotoba.datom :as kd]
-            #?(:clj [clojure.java.io :as io])))
+            #?(:clj [kotoba.io :as io])))
 
 #?(:clj
    (defn- actor-dir
      "20-actors/ibuki, resolved from this namespace's classpath location (runs from any cwd)."
      []
-     (-> (io/resource "ibuki/coscientist_cell.cljk") io/file .getParentFile)))
+     (-> (io/resource "ibuki/coscientist_cell.cljk") io/file io/parent-file)))
 
 #?(:clj
    (def log-default
